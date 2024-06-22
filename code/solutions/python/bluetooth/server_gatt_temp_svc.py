@@ -239,7 +239,8 @@ def start_advertising():
 dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
 bus = dbus.SystemBus()
 # we're assuming the adapter supports advertising
-adapter_path = bluetooth_constants.BLUEZ_NAMESPACE + bluetooth_constants.ADAPTER_NAME
+adapter_path = bluetooth_constants.BLUEZ_NAMESPACE + "hci1"
+# adapter_path = bluetooth_constants.BLUEZ_NAMESPACE + bluetooth_constants.ADAPTER_NAME
 adv_mgr_interface = dbus.Interface(bus.get_object(bluetooth_constants.BLUEZ_SERVICE_NAME,adapter_path), bluetooth_constants.ADVERTISING_MANAGER_INTERFACE)
 
 bus.add_signal_receiver(properties_changed,

@@ -116,6 +116,7 @@ def connect(bdaddr):
     global device_interface
     global device_path
 
+    adapter_path = bluetooth_constants.BLUEZ_NAMESPACE + "hci1"
     adapter_path = bluetooth_constants.BLUEZ_NAMESPACE + bluetooth_constants.ADAPTER_NAME
     device_path = bluetooth_utils.device_address_to_path(bdaddr, adapter_path)
     device_proxy = bus.get_object(bluetooth_constants.BLUEZ_SERVICE_NAME, device_path)

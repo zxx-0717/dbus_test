@@ -1,0 +1,56 @@
+2024-06-22 
+issue:
+hci0 can not find ai-thinker, restart bluetooth , power off/on , up/down do not effect
+hci1 scan/connect is normal(rssi: -96)
+
+solution:
+found bluetooth antenna is not connected ,  ater this problem fixed, hci0 working is OK.
+connection may be failed when rssi is poor.
+
+logs of hci0 when scanning
+Jun 22 10:07:52 tj2022-Default-string bluetoothd[250928]: src/adapter.c:start_discovery() sender :1.263
+Jun 22 10:07:52 tj2022-Default-string bluetoothd[250928]: src/adapter.c:update_discovery_filter() 
+Jun 22 10:07:52 tj2022-Default-string bluetoothd[250928]: src/adapter.c:discovery_filter_to_mgmt_cp() 
+Jun 22 10:07:52 tj2022-Default-string bluetoothd[250928]: src/adapter.c:trigger_start_discovery() 
+Jun 22 10:07:52 tj2022-Default-string bluetoothd[250928]: src/adapter.c:cancel_passive_scanning() 
+Jun 22 10:07:52 tj2022-Default-string bluetoothd[250928]: src/adapter.c:start_discovery_timeout() 
+Jun 22 10:07:52 tj2022-Default-string bluetoothd[250928]: src/adapter.c:start_discovery_timeout() adapter->current_discovery_filter == 0
+Jun 22 10:07:52 tj2022-Default-string bluetoothd[250928]: src/adapter.c:start_discovery_complete() status 0x00
+Jun 22 10:07:52 tj2022-Default-string bluetoothd[250928]: src/adapter.c:discovering_callback() hci0 type 7 discovering 1 method 0
+Jun 22 10:07:57 tj2022-Default-string bluetoothd[250928]: src/adapter.c:stop_discovery() sender :1.263
+Jun 22 10:07:57 tj2022-Default-string bluetoothd[250928]: src/adapter.c:stop_discovery_complete() status 0x00
+Jun 22 10:07:57 tj2022-Default-string bluetoothd[250928]: src/adapter.c:discovery_remove() owner :1.263
+Jun 22 10:07:57 tj2022-Default-string bluetoothd[250928]: src/adapter.c:discovery_free() 0x611a0709fc40
+Jun 22 10:07:57 tj2022-Default-string bluetoothd[250928]: src/adapter.c:trigger_passive_scanning() 
+Jun 22 10:07:57 tj2022-Default-string bluetoothd[250928]: src/adapter.c:discovering_callback() hci0 type 7 discovering 0 method 0
+
+logs of hci1 when scanning
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/adapter.c:start_discovery() sender :1.264
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/adapter.c:update_discovery_filter() 
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/adapter.c:discovery_filter_to_mgmt_cp() 
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/adapter.c:trigger_start_discovery() 
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/adapter.c:cancel_passive_scanning() 
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/adapter.c:start_discovery_timeout() 
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/adapter.c:start_discovery_timeout() adapter->current_discovery_filter == 0
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/adapter.c:start_discovery_complete() status 0x00
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/adapter.c:discovering_callback() hci1 type 7 discovering 1 method 0
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/adapter.c:device_found_callback() hci1 addr 94:C9:60:43:BE:FD, rssi -96 flags 0x0000 eir_len 37
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/device.c:device_create() dst 94:C9:60:43:BE:FD
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/device.c:device_new() address 94:C9:60:43:BE:FD
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/device.c:device_new() Creating device /org/bluez/hci1/dev_94_C9_60_43_BE_FD
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/device.c:device_set_legacy() legacy 0
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/device.c:device_set_rssi_with_delta() rssi -96
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/device.c:device_set_tx_power() tx_power 63
+Jun 22 10:09:23 tj2022-Default-string bluetoothd[250928]: src/device.c:device_set_flags() flags 6
+Jun 22 10:09:28 tj2022-Default-string bluetoothd[250928]: src/adapter.c:stop_discovery() sender :1.264
+Jun 22 10:09:28 tj2022-Default-string bluetoothd[250928]: src/adapter.c:stop_discovery_complete() status 0x00
+Jun 22 10:09:28 tj2022-Default-string bluetoothd[250928]: src/adapter.c:discovery_remove() owner :1.264
+Jun 22 10:09:28 tj2022-Default-string bluetoothd[250928]: src/adapter.c:discovery_free() 0x611a070bbcf0
+Jun 22 10:09:28 tj2022-Default-string bluetoothd[250928]: src/device.c:device_set_rssi_with_delta() rssi 0
+Jun 22 10:09:28 tj2022-Default-string bluetoothd[250928]: src/device.c:device_set_tx_power() tx_power 127
+Jun 22 10:09:28 tj2022-Default-string bluetoothd[250928]: src/adapter.c:trigger_passive_scanning() 
+Jun 22 10:09:28 tj2022-Default-string bluetoothd[250928]: src/adapter.c:discovering_callback() hci1 type 7 discovering 0 method 0
+Jun 22 10:09:54 tj2022-Default-string bluetoothd[250928]: src/device.c:device_remove() Removing device /org/bluez/hci1/dev_94_C9_60_43_BE_FD
+Jun 22 10:09:54 tj2022-Default-string bluetoothd[250928]: src/device.c:btd_device_unref() Freeing device /org/bluez/hci1/dev_94_C9_60_43_BE_FD
+Jun 22 10:09:54 tj2022-Default-string bluetoothd[250928]: src/device.c:device_free() 0x611a0709aca0
+

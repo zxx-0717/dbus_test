@@ -118,8 +118,8 @@ def discover_devices(bus, timeout):
     global adapter_interface
     global mainloop
     global timer_id
+    adapter_path = bluetooth_constants.BLUEZ_NAMESPACE + "hci1"
     adapter_path = bluetooth_constants.BLUEZ_NAMESPACE + bluetooth_constants.ADAPTER_NAME
-    # adapter_path = bluetooth_constants.BLUEZ_NAMESPACE + "hci1"
     adapter_object = bus.get_object(bluetooth_constants.BLUEZ_SERVICE_NAME, adapter_path)
     adapter_interface = dbus.Interface(adapter_object, bluetooth_constants.ADAPTER_INTERFACE)
     bus.add_signal_receiver(interfaces_added, dbus_interface = bluetooth_constants.DBUS_OM_IFACE,
